@@ -1,7 +1,7 @@
 class hoge_files::install {
     file {
         "/tmp/hoge":
-        mode    => 664,
+        mode    => "0664",
         recurse => "remote",
         source  => "puppet:///modules/hoge_files/hoge/"
     }
