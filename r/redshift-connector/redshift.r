@@ -9,7 +9,7 @@ connectRedshift <- function() {
 
     driver <- JDBC('com.amazon.redshift.jdbc.Driver', './redshift/RedshiftJDBC42-1.2.1.1001.jar', identifier.quote="`")
     url <- sprintf(
-        'jdbc:redshift://%s:%s/%s?ssl=true&sslMode=verify-ca&sslrootcert=%s&user=%s&password=%s',
+        'jdbc:redshift://%s:%s/%s?ssl=true&sslMode=verify-full&sslrootcert=%s&user=%s&password=%s',
         Sys.getenv('REDSHIFT_HOST'),
         Sys.getenv('REDSHIFT_PORT'),
         Sys.getenv('REDSHIFT_DB'),
