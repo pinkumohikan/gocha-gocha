@@ -1,7 +1,7 @@
-limonade ベンチマーク
+slimframework3 ベンチマーク
 ====
 
-https://limonade-php.github.io/
+https://www.slimframework.com/
 
 ベンチマーク結果
 ----
@@ -22,16 +22,17 @@ $ siege -c 300 -t 10s http://133.18.25.181
 ** Preparing 300 concurrent users for battle.
 The server is now under siege...
 Lifting the server siege...
-Transactions:		       21531 hits
+Transactions:		        6518 hits
 Availability:		      100.00 %
-Elapsed time:		        9.56 secs
-Data transferred:	        0.60 MB
-Response time:		        0.13 secs
-Transaction rate:	     2252.20 trans/sec
-Throughput:		        0.06 MB/sec
-Concurrency:		      290.06
-Successful transactions:       21531
+Elapsed time:		        9.45 secs
+Data transferred:	        0.18 MB
+Response time:		        0.36 secs
+Transaction rate:	      689.74 trans/sec
+Throughput:		        0.02 MB/sec
+Concurrency:		      246.31
+Successful transactions:        6518
 Failed transactions:	           0
-Longest transaction:	        7.08
-Shortest transaction:	        0.02
+Longest transaction:	        5.74
+Shortest transaction:	        0.05
 ```
+
