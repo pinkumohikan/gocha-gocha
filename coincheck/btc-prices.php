@@ -2,7 +2,7 @@
 
 ini_set('date.timezone', 'Asia/Tokyo');
 
-const END_POINT = 'https://coincheck.com/api/charts/candle_rates?limit=300&market=coincheck&pair=btc_jpy&unit=3600&v2=true';
+const END_POINT = 'https://coincheck.com/api/charts/candle_rates?limit=300&market=coincheck&pair=btc_jpy&unit=900&v2=true';
 
 $prices = json_decode(file_get_contents(END_POINT), true);
 $formatted = array_map(function(array $raw) {
