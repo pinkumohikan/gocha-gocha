@@ -8,7 +8,10 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "redis",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies ++= Seq(
+      "net.debasishg" %% "redisclient" % "3.9",
+      scalaTest % Test
+    )
   )
 
 // Uncomment the following for publishing to Sonatype.
