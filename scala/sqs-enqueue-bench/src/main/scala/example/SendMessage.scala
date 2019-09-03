@@ -7,12 +7,12 @@ import software.amazon.awssdk.services.sqs.SqsClient
 import software.amazon.awssdk.services.sqs.model.SendMessageRequest
 
 object SendMessage extends App {
-  val count = 10000
   println("started")
   val start = ZonedDateTime.now()
 
   val sqsClient = SqsClient.builder().region(Region.AP_NORTHEAST_1).build()
   val queueUrl = sys.env("QUEUE_URL")
+  val count = sys.env("COUNT").toInt
 
   (1 to count)
     .map(id => SendMessageRequest.builder().queueUrl(queueUrl).messageBody(s"id=$id").build())
