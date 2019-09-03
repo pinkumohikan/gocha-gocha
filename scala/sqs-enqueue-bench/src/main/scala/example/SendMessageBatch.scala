@@ -19,6 +19,7 @@ object SendMessageBatch extends App {
     .grouped(10)
     .toList
     .map(messages => SendMessageBatchRequest.builder().queueUrl(queueUrl).entries(messages: _*).build())
+    .par
     .map(req => {
       println("calling sendMessageBatch")
       sqsClient.sendMessageBatch(req)
