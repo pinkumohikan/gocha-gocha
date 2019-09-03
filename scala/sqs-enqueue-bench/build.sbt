@@ -8,7 +8,10 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "sqs-enqueue-bench",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies ++= Seq(
+      scalaTest % Test,
+      "software.amazon.awssdk" % "sqs" % "2.7.36"
+    )
   )
 
 // Uncomment the following for publishing to Sonatype.
