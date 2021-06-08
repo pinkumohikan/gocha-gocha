@@ -3,40 +3,30 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/pinkumohikan/gocha-gocha/go/swagger/api"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
 func main() {
-	http.HandleFunc("/ping", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("content-type", "application/json")
-		res := map[string]string{
-			"message": "pong",
-		}
-		j, _ := json.Marshal(res)
-		fmt.Fprintf(w, string(j))
-	})
-
-	type GreetInput struct {
-		Name string `json:"name"`
-	}
-
 	http.HandleFunc("/greet", func(w http.ResponseWriter, r *http.Request) {
-		var i GreetInput
+		log.Printf("POST /greet: called")
+
 		ij, err := ioutil.ReadAll(r.Body)
 		defer r.Body.Close()
 		if err != nil {
 			log.Fatalln(err)
 		}
 
+		var i api.GreetRequest
 		if err := json.Unmarshal(ij, &i); err != nil {
 			log.Fatalln(err)
 		}
 
 		w.Header().Set("content-type", "application/json")
-		j, _ := json.Marshal(map[string]string{
-			"greeting": "Hello " + i.Name,
+		j, _ := json.Marshal(api.GreetResponse{
+			Greeting: "Hello " + i.Name,
 		})
 		fmt.Fprintf(w, string(j))
 	})
