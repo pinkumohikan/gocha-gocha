@@ -21,13 +21,37 @@ func main() {
 	consumerSecret := os.Getenv("API_SECRET")
 	config := oauth1.NewConfig(consumerKey, consumerSecret)
 
+	const IDof1 = "1202119121518784512"
+	const IDof2 = "1336840344013398016"
+
 	a := config.Client(
 		oauth1.NoContext,
 		oauth1.NewToken(os.Getenv("ACCESS_TOKEN_1"), os.Getenv("ACCESS_TOKEN_SECRET_1")),
 	)
 
-	if err := sendDM(a, "1336840344013398016"); err != nil {
-		log.Fatalln(err)
+	b := config.Client(
+		oauth1.NoContext,
+		oauth1.NewToken(os.Getenv("ACCESS_TOKEN_2"), os.Getenv("ACCESS_TOKEN_SECRET_2")),
+	)
+
+	for i := 0; i < 10; i++ {
+		if err := sendDM(a, IDof2); err != nil {
+			log.Fatalln(err)
+		}
+		log.Println("A -> B")
+
+		time.Sleep(time.Second * time.Duration(rand.Intn(2)))
+
+		for j := 0; j < 5; j++ {
+			log.Println("B -> A")
+			if err := sendDM(b, IDof1); err != nil {
+				log.Fatalln(err)
+			}
+
+			time.Sleep(time.Millisecond * 100 * time.Duration(rand.Intn(5)))
+		}
+
+		time.Sleep(time.Second * time.Duration(rand.Intn(2)))
 	}
 }
 
