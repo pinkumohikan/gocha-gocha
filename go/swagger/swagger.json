@@ -1,0 +1,71 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "Title: テストアプリのAPI Document",
+    "title": "Documentation of our awesome API.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "paths": {
+    "/greet": {
+      "post": {
+        "description": "挨拶をするすごいAPI",
+        "operationId": "PostGreet",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/GreetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/responses/greetResponse"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GreetRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        }
+      },
+      "x-go-package": "github.com/pinkumohikan/gocha-gocha/go/swagger/api"
+    },
+    "GreetResponse": {
+      "type": "object",
+      "properties": {
+        "greeting": {
+          "type": "string",
+          "x-go-name": "Greeting"
+        }
+      },
+      "x-go-package": "github.com/pinkumohikan/gocha-gocha/go/swagger/api"
+    }
+  },
+  "responses": {
+    "greetResponse": {
+      "description": "",
+      "schema": {
+        "$ref": "#/definitions/GreetResponse"
+      }
+    }
+  }
+}
