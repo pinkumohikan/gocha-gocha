@@ -2,9 +2,7 @@ name: GHA Schedule Event
 
 on:
   schedule:
-  - cron: '10 * * * *'
-  - cron: '10 1 * * *'
-  - cron: '10 10 * * *'
+  - cron: '0 15 * * *'
 
 jobs:
   task:
