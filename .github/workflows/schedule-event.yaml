@@ -1,0 +1,15 @@
+name: GHA Schedule Event
+
+on:
+  schedule:
+  - cron: '10 * * * *'
+
+jobs:
+  task:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Greeting
+        run: ehco "Hello World"
+
