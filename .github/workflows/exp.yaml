@@ -1,14 +1,10 @@
 name: GHA Experiment
 
-on:
-  pull_request_target:
-    branches:
-      - main
-
 jobs:
   run:
     runs-on: ubuntu-22.04
     timeout-minutes: 10
+    if: ${{ github.base_ref == 'main' }}
 
     steps:
       - run: echo "Executed"
